@@ -5,7 +5,8 @@ const store = {
     { id: cuid(), name: 'milk', checked: true },
     { id: cuid(), name: 'bread', checked: false }
   ],
-  hideCheckedItems: false
+  hideCheckedItems: false,
+  editItemTitle:''
 };
 
 const generateItemElement = function (item) {
@@ -25,6 +26,9 @@ const generateItemElement = function (item) {
         </button>
         <button class='shopping-item-delete js-item-delete'>
           <span class='button-label'>delete</span>
+        </button>
+        <button class= 'shopping-item-edit js-item-edit'>
+          <span class= button-label'>edit</span>
         </button>
       </div>
     </li>`;
@@ -144,6 +148,15 @@ const handleToggleFilterClick = function () {
     render();
   });
 };
+const handleEditClick = function(){
+  let editName = "value returning"
+  
+  $('.js-shopping-list').on('click', '.js-item-edit', event => {
+    console.log(editName);
+    render();
+  });
+};
+
 
 /**
  * This function will be our callback when the
@@ -160,6 +173,7 @@ const handleShoppingList = function () {
   handleItemCheckClicked();
   handleDeleteItemClicked();
   handleToggleFilterClick();
+  handleEditClick();
 };
 
 // when the page loads, call `handleShoppingList`
